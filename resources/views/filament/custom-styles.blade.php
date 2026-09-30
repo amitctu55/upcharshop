@@ -93,16 +93,37 @@ body, .fi-body {
 }
 .dark .fi-brand-name { color: #f1f5f9 !important; }
 
-/* Sidebar Group Labels */
-.fi-sidebar-group-label {
-    font-size: 0.62rem !important;
-    font-weight: 700 !important;
-    letter-spacing: 0.09em !important;
-    text-transform: uppercase !important;
-    color: #94a3b8 !important;
-    padding: 18px 16px 6px !important;
+/* Sidebar Group Headers & Alignment */
+.fi-sidebar-group-header,
+.fi-sidebar-group-button {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    padding: 14px 16px 6px !important;
+    width: 100% !important;
 }
-.dark .fi-sidebar-group-label { color: #475569 !important; }
+.fi-sidebar-group-header > *,
+.fi-sidebar-group-button > * {
+    display: flex !important;
+    align-items: center !important;
+}
+.fi-sidebar-group-header svg,
+.fi-sidebar-group-button svg {
+    align-self: center !important;
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+    opacity: 0.65;
+}
+.fi-sidebar-group-label {
+    font-size: 0.68rem !important;
+    font-weight: 700 !important;
+    letter-spacing: 0.04em !important;
+    text-transform: capitalize !important;
+    color: #475569 !important;
+    display: inline-flex !important;
+    align-items: center !important;
+}
+.dark .fi-sidebar-group-label { color: #94a3b8 !important; }
 
 /* Sidebar Nav Items */
 .fi-sidebar-item-button {
@@ -111,44 +132,57 @@ body, .fi-body {
     padding: 9px 14px !important;
     font-size: 0.83rem !important;
     font-weight: 500 !important;
-    color: #475569 !important;
+    color: #334155 !important;
     transition: all 0.18s cubic-bezier(0.4, 0, 0.2, 1) !important;
     position: relative;
     overflow: hidden;
 }
-.dark .fi-sidebar-item-button { color: #94a3b8 !important; }
+.dark .fi-sidebar-item-button { color: #cbd5e1 !important; }
 
 .fi-sidebar-item-button:hover {
-    background: rgba(13, 148, 136, 0.07) !important;
-    color: var(--brand-700) !important;
+    background: rgba(13, 148, 136, 0.08) !important;
+    color: #0f766e !important;
     transform: translateX(3px) !important;
 }
 .dark .fi-sidebar-item-button:hover {
-    background: rgba(13, 148, 136, 0.12) !important;
-    color: var(--brand-400) !important;
+    background: rgba(13, 148, 136, 0.15) !important;
+    color: #2dd4bf !important;
 }
 
-/* Active State — Teal Gradient Pill */
-.fi-sidebar-item-active .fi-sidebar-item-button {
-    background: linear-gradient(135deg, var(--brand-600), var(--brand-700)) !important;
+/* Active State — High Contrast Solid White on Vibrant Teal */
+.fi-sidebar-item-active .fi-sidebar-item-button,
+.fi-sidebar-item-active > a,
+.fi-sidebar-item-active[aria-current="page"] {
+    background: #0d9488 !important;
+    background: linear-gradient(135deg, #0d9488, #0f766e) !important;
     color: #ffffff !important;
     font-weight: 700 !important;
-    box-shadow: 0 4px 18px -4px rgba(13, 148, 136, 0.50),
+    box-shadow: 0 4px 16px -3px rgba(13, 148, 136, 0.50),
                 0 2px 6px -2px rgba(13, 148, 136, 0.3) !important;
     transform: translateX(0) !important;
 }
 .dark .fi-sidebar-item-active .fi-sidebar-item-button {
-    background: linear-gradient(135deg, var(--brand-600), var(--brand-800)) !important;
+    background: linear-gradient(135deg, #0d9488, #115e59) !important;
+}
+
+.fi-sidebar-item-active .fi-sidebar-item-button span,
+.fi-sidebar-item-active .fi-sidebar-item-button .fi-sidebar-item-label,
+.fi-sidebar-item-active .fi-sidebar-item-button svg,
+.fi-sidebar-item-active .fi-sidebar-item-button .fi-icon {
+    color: #ffffff !important;
+    fill: currentColor !important;
+    opacity: 1 !important;
 }
 
 /* Sidebar Icon */
 .fi-sidebar-item-button .fi-icon {
     width: 18px !important;
     height: 18px !important;
-    opacity: 0.7;
+    opacity: 0.75;
 }
 .fi-sidebar-item-active .fi-sidebar-item-button .fi-icon {
     opacity: 1 !important;
+    color: #ffffff !important;
 }
 
 /* Sidebar divider */
@@ -576,23 +610,5 @@ body, .fi-body {
     height: 32px !important;
     font-size: 0.75rem !important;
     padding: 0 10px !important;
-}
-
-/* ============================================================
-   UPCHAR SIDEBAR FOOTER BRAND WATERMARK
-   ============================================================ */
-.fi-sidebar::after {
-    content: 'upchar.shop';
-    position: absolute;
-    bottom: 14px;
-    left: 0; right: 0;
-    text-align: center;
-    font-size: 0.65rem;
-    font-weight: 700;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: rgba(148,163,184,0.45);
-    pointer-events: none;
-    font-family: var(--font-mono);
 }
 </style>

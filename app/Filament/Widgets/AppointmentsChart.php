@@ -50,7 +50,8 @@ class AppointmentsChart extends ChartWidget
 
         for ($i = $days - 1; $i >= 0; $i--) {
             $date = today()->subDays($i);
-            $labels[] = $date->format($days <= 14 ? 'D, M j' : 'M j');
+            // Compact non-overlapping date format
+            $labels[] = $date->format('M j');
             $data[] = (clone $query)->whereDate('appointment_date', $date)->count();
         }
 
@@ -71,6 +72,50 @@ class AppointmentsChart extends ChartWidget
                 ],
             ],
             'labels' => $labels,
+        ];
+    }
+
+    protected function getOptions(): array
+    {
+        return [
+            'scales' => [
+                'x' => [
+                    'grid' => [
+                        'display' => false,
+                    ],
+                    'ticks' => [
+                        'autoSkip' => true,
+                        'maxTicksLimit' => 8,
+                        'maxRotation' => 0,
+                        'font' => [
+                            'size' => 11,
+                        ],
+                    ],
+                ],
+                'y' => [
+                    'beginAtZero' => true,
+                    'min' => 0,
+                    'suggestedMax' => 5,
+                    'ticks' => [
+                        'stepSize' => 1,
+                        'precision' => 0,
+                        'font' => [
+                            'size' => 11,
+                        ],
+                    ],
+                    'grid' => [
+                        'color' => 'rgba(226, 232, 240, 0.6)',
+                    ],
+                ],
+            ],
+            'plugins' => [
+                'legend' => [
+                    'display' => false,
+                ],
+                'tooltip' => [
+                    'enabled' => true,
+                ],
+            ],
         ];
     }
 

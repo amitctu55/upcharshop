@@ -66,6 +66,34 @@ class DepartmentDistributionChart extends ChartWidget
         ];
     }
 
+    protected function getOptions(): array
+    {
+        return [
+            'scales' => [
+                'x' => [
+                    'display' => false,
+                ],
+                'y' => [
+                    'display' => false,
+                ],
+            ],
+            'plugins' => [
+                'legend' => [
+                    'display' => true,
+                    'position' => 'bottom',
+                    'labels' => [
+                        'boxWidth' => 12,
+                        'padding' => 12,
+                        'font' => [
+                            'size' => 11,
+                        ],
+                    ],
+                ],
+            ],
+            'cutout' => '65%',
+        ];
+    }
+
     protected function getType(): string
     {
         return 'doughnut';

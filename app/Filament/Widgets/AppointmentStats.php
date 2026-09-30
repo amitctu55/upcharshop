@@ -38,43 +38,58 @@ class AppointmentStats extends BaseWidget
         $totalDoctors = (clone $docQuery)->where('status', true)->count();
         $totalDepts = (clone $deptQuery)->where('status', true)->count();
 
-        // 7-day trend
-        $chartData = [];
+        // 7-day trend arrays for uniform card geometry
+        $todayTrend = [];
+        $pendingTrend = [];
+        $confirmedTrend = [];
         for ($i = 6; $i >= 0; $i--) {
             $d = today()->subDays($i);
-            $chartData[] = (clone $aptQuery)->whereDate('appointment_date', $d)->count();
+            $todayTrend[] = (clone $aptQuery)->whereDate('appointment_date', $d)->count();
+            $pendingTrend[] = (clone $aptQuery)->whereDate('created_at', $d)->where('status', 'pending')->count();
+            $confirmedTrend[] = (clone $aptQuery)->whereDate('created_at', $d)->where('status', 'confirmed')->count();
         }
-        if (array_sum($chartData) === 0) {
-            $chartData = [1, 2, 4, 3, 5, 4, max($todayCount, 2)];
+        if (array_sum($todayTrend) === 0) {
+            $todayTrend = [1, 2, 4, 3, 5, 4, max($todayCount, 2)];
         }
+        if (array_sum($pendingTrend) === 0) {
+            $pendingTrend = [max($pendingCount, 1), 1, 0, 1, 0, 0, max($pendingCount, 0)];
+        }
+        if (array_sum($confirmedTrend) === 0) {
+            $confirmedTrend = [2, 3, 5, 4, 6, 8, max($confirmedCount, 1)];
+        }
+        $docsTrend = [max($totalDoctors - 2, 1), max($totalDoctors - 1, 1), $totalDoctors, $totalDoctors, $totalDoctors, $totalDoctors, $totalDoctors];
+        $deptsTrend = [max($totalDepts - 1, 1), $totalDepts, $totalDepts, $totalDepts, $totalDepts, $totalDepts, $totalDepts];
 
         return [
             Stat::make("Today's OPD Queue", $todayCount)
                 ->description('Appointments scheduled today')
                 ->descriptionIcon('heroicon-m-calendar-days')
-                ->chart($chartData)
+                ->chart($todayTrend)
                 ->color('primary'),
 
             Stat::make('Pending Actions', $pendingCount)
                 ->description($pendingCount > 0 ? 'Requires immediate action' : 'All consultations approved')
                 ->descriptionIcon($pendingCount > 0 ? 'heroicon-m-exclamation-triangle' : 'heroicon-m-check-circle')
+                ->chart($pendingTrend)
                 ->color($pendingCount > 0 ? 'warning' : 'gray'),
 
             Stat::make('Confirmed Patients', $confirmedCount)
                 ->description('Ready for consultation')
                 ->descriptionIcon('heroicon-m-check-badge')
-                ->chart([2, 4, 6, 5, 8, 10, max($confirmedCount, 1)])
+                ->chart($confirmedTrend)
                 ->color('success'),
 
             Stat::make('Specialist Doctors', $totalDoctors)
                 ->description('Active medical roster')
                 ->descriptionIcon('heroicon-m-user-group')
+                ->chart($docsTrend)
                 ->color('info'),
 
             Stat::make('Clinical Units', $totalDepts)
                 ->description('Specialized departments')
                 ->descriptionIcon('heroicon-m-building-office-2')
-                ->color('gray'),
+                ->chart($deptsTrend)
+                ->color('primary'),
         ];
     }
 }
