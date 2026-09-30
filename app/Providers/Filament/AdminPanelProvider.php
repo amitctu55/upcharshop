@@ -51,6 +51,7 @@ class AdminPanelProvider extends PanelProvider
                 \App\Filament\Widgets\AppointmentStats::class,
                 \App\Filament\Widgets\AppointmentsChart::class,
                 \App\Filament\Widgets\DepartmentDistributionChart::class,
+                \App\Filament\Widgets\HospitalOperationsWidget::class,
                 \App\Filament\Widgets\RecentAppointmentsWidget::class,
             ])
             ->renderHook(

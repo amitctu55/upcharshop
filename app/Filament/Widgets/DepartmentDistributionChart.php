@@ -2,12 +2,15 @@
 
 namespace App\Filament\Widgets;
 
+use App\Http\Middleware\ResolveHospital;
 use App\Models\Department;
+use App\Models\Hospital;
 use Filament\Widgets\ChartWidget;
 
 class DepartmentDistributionChart extends ChartWidget
 {
-    protected static ?string $heading = '🩺 Specialties & Clinical Coverage';
+    protected static ?string $heading = '🩺 Specialties & Clinical Roster';
+    protected static ?string $description = 'Distribution of specialist doctors across active hospital departments';
     protected static ?int $sort = 4;
     protected int | string | array $columnSpan = [
         'default' => 'full',
@@ -16,7 +19,20 @@ class DepartmentDistributionChart extends ChartWidget
 
     protected function getData(): array
     {
-        $departments = Department::withCount('doctors')->where('status', true)->get();
+        $user = auth()->user();
+        $host = request()->getHost();
+        $subdomain = (new ResolveHospital)->subdomain($host);
+
+        $hospital = null;
+        if ($subdomain !== '' && $subdomain !== 'localhost' && $subdomain !== $host) {
+            $hospital = Hospital::where('slug', $subdomain)->orWhere('custom_domain', $host)->first();
+        }
+        if (!$hospital && $user && $user->hospital_id) {
+            $hospital = $user->hospital;
+        }
+
+        $query = $hospital ? Department::where('hospital_id', $hospital->id) : Department::query();
+        $departments = $query->withCount('doctors')->where('status', true)->take(7)->get();
 
         $labels = [];
         $data = [];
@@ -31,8 +47,8 @@ class DepartmentDistributionChart extends ChartWidget
         }
 
         if (empty($labels)) {
-            $labels = ['General Medicine'];
-            $data = [1];
+            $labels = ['General Medicine', 'Cardiology', 'Pediatrics'];
+            $data = [3, 2, 2];
         }
 
         return [
@@ -41,8 +57,9 @@ class DepartmentDistributionChart extends ChartWidget
                     'label' => 'Specialist Doctors',
                     'data' => $data,
                     'backgroundColor' => array_slice($palette, 0, count($labels)),
-                    'borderWidth' => 2,
+                    'borderWidth' => 3,
                     'borderColor' => '#ffffff',
+                    'hoverOffset' => 6,
                 ],
             ],
             'labels' => $labels,
