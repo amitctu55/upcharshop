@@ -68,7 +68,12 @@
         <div class="grid grid-cols-1 gap-2">
             {{-- Tenant Hospital Admin --}}
             <button type="button" 
-                    x-on:click="$wire.set('data.email', 'admin@{{ $tenantSlug }}.com'); $wire.set('data.password', 'password');"
+                    x-on:click="
+                        $wire.set('data.email', 'admin@{{ $tenantSlug }}.com', false);
+                        $wire.set('data.password', 'password', false);
+                        let e = document.getElementById('data.email'); if(e){ e.value = 'admin@{{ $tenantSlug }}.com'; e.dispatchEvent(new Event('input', {bubbles: true})); }
+                        let p = document.getElementById('data.password'); if(p){ p.value = 'password'; p.dispatchEvent(new Event('input', {bubbles: true})); }
+                    "
                     class="w-full text-left flex items-center justify-between p-2.5 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700/80 hover:border-teal-500 dark:hover:border-teal-400 transition-all group shadow-sm hover:shadow cursor-pointer">
                 <div class="flex items-center gap-2.5">
                     <div class="h-8 w-8 rounded-lg bg-teal-50 dark:bg-teal-950/60 text-teal-700 dark:text-teal-300 flex items-center justify-center font-bold text-xs shrink-0 border border-teal-200 dark:border-teal-800">
@@ -76,7 +81,7 @@
                     </div>
                     <div>
                         <div class="font-bold text-slate-900 dark:text-white group-hover:text-teal-600 dark:group-hover:text-teal-400 text-xs">
-                            {{ $hospital ? $hospital->name : 'LifeLine' }} Administrator
+                            {{ $hospital ? $hospital->name : 'Hospital' }} Administrator
                         </div>
                         <div class="text-slate-500 dark:text-slate-400 text-[11px] font-mono">
                             admin@{{ $tenantSlug }}.com &bull; password
@@ -90,7 +95,12 @@
 
             {{-- Reception / Front Desk --}}
             <button type="button" 
-                    x-on:click="$wire.set('data.email', 'front@{{ $tenantSlug }}.com'); $wire.set('data.password', 'password');"
+                    x-on:click="
+                        $wire.set('data.email', 'front@{{ $tenantSlug }}.com', false);
+                        $wire.set('data.password', 'password', false);
+                        let e = document.getElementById('data.email'); if(e){ e.value = 'front@{{ $tenantSlug }}.com'; e.dispatchEvent(new Event('input', {bubbles: true})); }
+                        let p = document.getElementById('data.password'); if(p){ p.value = 'password'; p.dispatchEvent(new Event('input', {bubbles: true})); }
+                    "
                     class="w-full text-left flex items-center justify-between p-2.5 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700/80 hover:border-teal-500 dark:hover:border-teal-400 transition-all group shadow-sm hover:shadow cursor-pointer">
                 <div class="flex items-center gap-2.5">
                     <div class="h-8 w-8 rounded-lg bg-cyan-50 dark:bg-cyan-950/60 text-cyan-700 dark:text-cyan-300 flex items-center justify-center font-bold text-xs shrink-0 border border-cyan-200 dark:border-cyan-800">
@@ -112,7 +122,12 @@
 
             {{-- Super Admin --}}
             <button type="button" 
-                    x-on:click="$wire.set('data.email', 'super@platform.com'); $wire.set('data.password', 'ChangeMe!123');"
+                    x-on:click="
+                        $wire.set('data.email', 'super@platform.com', false);
+                        $wire.set('data.password', 'password', false);
+                        let e = document.getElementById('data.email'); if(e){ e.value = 'super@platform.com'; e.dispatchEvent(new Event('input', {bubbles: true})); }
+                        let p = document.getElementById('data.password'); if(p){ p.value = 'password'; p.dispatchEvent(new Event('input', {bubbles: true})); }
+                    "
                     class="w-full text-left flex items-center justify-between p-2.5 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700/80 hover:border-teal-500 dark:hover:border-teal-400 transition-all group shadow-sm hover:shadow cursor-pointer">
                 <div class="flex items-center gap-2.5">
                     <div class="h-8 w-8 rounded-lg bg-indigo-50 dark:bg-indigo-950/60 text-indigo-700 dark:text-indigo-300 flex items-center justify-center font-bold text-xs shrink-0 border border-indigo-200 dark:border-indigo-800">
@@ -123,7 +138,7 @@
                             Platform Super Admin
                         </div>
                         <div class="text-slate-500 dark:text-slate-400 text-[11px] font-mono">
-                            super@platform.com &bull; ChangeMe!123
+                            super@platform.com &bull; password
                         </div>
                     </div>
                 </div>

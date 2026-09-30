@@ -19,6 +19,6 @@ class User extends Authenticatable implements FilamentUser
 
     public function hospital() { return $this->belongsTo(Hospital::class); }
     public function doctorProfile() { return $this->belongsTo(Doctor::class, 'doctor_id'); }
-    public function canAccessPanel(Panel $panel): bool { return (bool) $this->is_active; }
+    public function canAccessPanel(Panel $panel): bool { return $this->is_active ?? true; }
     public function isSuperAdmin(): bool { return $this->hasRole('super_admin'); }
 }

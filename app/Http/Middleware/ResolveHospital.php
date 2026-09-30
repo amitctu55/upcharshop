@@ -35,6 +35,14 @@ class ResolveHospital
 
     public function subdomain(string $host): string
     {
+        // Support ?tenant=slug parameter for environments with DNS limitations
+        if (request()->filled('tenant')) {
+            $t = trim(request()->query('tenant'));
+            if ($t !== '') {
+                return $t;
+            }
+        }
+
         $parts = explode('.', $host);
         if (end($parts) === 'localhost') {
             $sub = count($parts) >= 2 ? $parts[0] : '';

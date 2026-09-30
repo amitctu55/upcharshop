@@ -79,7 +79,11 @@ class SlotService
         return DB::transaction(function () use ($doctor, $date, $time, $data) {
             $clash = Appointment::where('doctor_id', $doctor->id)
                 ->whereDate('appointment_date', $date)
-                ->whereTime('slot_time', $time)
+                ->where(function ($q) use ($time) {
+                    $q->where('slot_time', $time)
+                      ->orWhere('slot_time', $time . ':00')
+                      ->orWhereTime('slot_time', $time);
+                })
                 ->whereNotIn('status', ['cancelled'])
                 ->lockForUpdate()
                 ->exists();

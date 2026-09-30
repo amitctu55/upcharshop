@@ -12,6 +12,10 @@ use App\Models\Hospital;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
+Route::get('/login', function (Request $request) {
+    return redirect()->to(filament()->getPanel('admin')->getLoginUrl());
+})->name('login');
+
 Route::get('/', function (Request $request) {
     $host = $request->getHost();
     $subdomain = (new \App\Http\Middleware\ResolveHospital)->subdomain($host);
