@@ -24,7 +24,7 @@ jobs:
         uses: shivammathur/setup-php@v2
         with:
           php-version: ${{ matrix.php }}
-          extensions: mbstring, xml, ctype, iconv, intl, pdo, sqlite, pdo_sqlite, bcmath, gd, fileinfo
+          extensions: mbstring, xml, ctype, iconv, intl, pdo, sqlite, pdo_sqlite, bcmath, gd, fileinfo, zip
           coverage: none
           tools: composer:v2
 
@@ -43,7 +43,7 @@ jobs:
           restore-keys: ${{ runner.os }}-composer-${{ matrix.php }}-
 
       - name: Install Composer Dependencies
-        run: composer install --no-interaction --prefer-dist --optimize-autoloader
+        run: composer install --no-interaction --prefer-dist --optimize-autoloader --no-progress --ignore-platform-req=php+
 
       - name: Run PHP Syntax & Lint Verification
         run: php tests/lint.php
