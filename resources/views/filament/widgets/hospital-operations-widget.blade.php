@@ -121,46 +121,44 @@
     </div>
 
     {{-- CARD 3: Platform Trust & Support Guarantee --}}
-    <div class="rounded-2xl border border-slate-800 bg-gradient-to-br from-slate-900 via-slate-850 to-slate-900 text-white p-6 shadow-sm hover:shadow-md transition relative overflow-hidden flex flex-col justify-between">
-        <div class="absolute -right-12 -bottom-12 h-40 w-40 rounded-full bg-teal-500/10 blur-2xl pointer-events-none"></div>
-
+    <div class="rounded-2xl border border-slate-200/90 dark:border-slate-800 bg-white dark:bg-slate-900 p-6 shadow-sm hover:shadow-md transition flex flex-col justify-between">
         <div>
-            <div class="flex items-center justify-between mb-4">
-                <div class="flex items-center gap-2.5">
-                    <div class="h-9 w-9 rounded-xl bg-teal-500/20 text-teal-300 flex items-center justify-center font-bold text-base border border-teal-500/30">
+            <div class="flex items-center justify-between mb-5">
+                <div class="flex items-center gap-3">
+                    <div class="h-10 w-10 rounded-xl bg-teal-50 dark:bg-teal-950/60 flex items-center justify-center text-teal-600 dark:text-teal-400 font-bold text-lg shadow-sm border border-teal-100 dark:border-teal-900/60">
                         🛡️
                     </div>
                     <div>
-                        <h3 class="text-sm font-bold text-white font-heading">
+                        <h3 class="text-sm font-bold text-slate-900 dark:text-white font-heading">
                             Enterprise SaaS Portal
                         </h3>
-                        <p class="text-xs text-teal-200/80">Powered by Upchar.shop</p>
+                        <p class="text-xs text-slate-500 dark:text-slate-400">Powered by Upchar.shop</p>
                     </div>
                 </div>
-                <span class="text-xs font-mono px-2.5 py-0.5 rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 font-bold">
+                <span class="text-xs font-mono px-2.5 py-0.5 rounded-full bg-teal-50 text-teal-700 dark:bg-teal-950/70 dark:text-teal-300 border border-teal-200 dark:border-teal-800 font-bold">
                     Pro v2.5
                 </span>
             </div>
 
-            <div class="space-y-2 text-xs text-slate-200">
-                <div class="flex items-center justify-between py-1 border-b border-white/5">
-                    <span class="text-slate-400">Provider:</span>
-                    <span class="font-semibold text-white">Workboat Media Private Limited</span>
+            <div class="space-y-3 text-xs text-slate-700 dark:text-slate-200">
+                <div class="flex items-center justify-between p-2.5 rounded-xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200/80 dark:border-slate-700/60">
+                    <span class="text-slate-500 dark:text-slate-400 font-medium">Provider:</span>
+                    <span class="font-bold text-slate-900 dark:text-white">Workboat Media Private Limited</span>
                 </div>
-                <div class="flex items-center justify-between py-1 border-b border-white/5">
-                    <span class="text-slate-400">Corporate CIN:</span>
-                    <span class="font-mono text-teal-300 font-semibold">U80302UP2019PTC120912</span>
+                <div class="flex items-center justify-between p-2.5 rounded-xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200/80 dark:border-slate-700/60">
+                    <span class="text-slate-500 dark:text-slate-400 font-medium">Corporate CIN:</span>
+                    <span class="font-mono text-teal-700 dark:text-teal-300 font-bold">U80302UP2019PTC120912</span>
                 </div>
-                <div class="flex items-center justify-between py-1">
-                    <span class="text-slate-400">Support Desk:</span>
-                    <a href="tel:+917607777883" class="font-bold text-white hover:text-teal-300">+91 7607777883</a>
+                <div class="flex items-center justify-between px-1">
+                    <span class="text-slate-500 dark:text-slate-400 font-medium">Support Desk:</span>
+                    <a href="tel:+917607777883" class="font-bold text-slate-900 dark:text-white hover:text-teal-600">+91 7607777883</a>
                 </div>
             </div>
         </div>
 
-        <div class="mt-4 pt-3 border-t border-white/10 flex items-center justify-between text-xs">
-            <span class="text-slate-400">24/7 SLA Guarantee:</span>
-            <span class="text-emerald-400 font-bold">99.98% Uptime</span>
+        <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-xs">
+            <span class="text-slate-500 dark:text-slate-400">24/7 SLA Guarantee:</span>
+            <span class="text-emerald-600 dark:text-emerald-400 font-bold">99.98% Uptime</span>
         </div>
     </div>
 </div>

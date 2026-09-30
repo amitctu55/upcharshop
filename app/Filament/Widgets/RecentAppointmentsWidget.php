@@ -126,10 +126,10 @@ class RecentAppointmentsWidget extends BaseWidget
                     ->url(fn (Appointment $record): string => "tel:{$record->phone}"),
 
                 Tables\Actions\Action::make('view')
-                    ->icon('heroicon-m-arrow-top-right-on-square')
+                    ->icon('heroicon-m-eye')
                     ->color('gray')
                     ->iconButton()
-                    ->tooltip('Manage Appointment')
+                    ->tooltip('View Appointment')
                     ->url(fn (Appointment $record): string => "/admin/appointments/{$record->id}/edit"),
             ])
             ->emptyStateHeading('No Appointments Recorded Yet')

@@ -189,167 +189,180 @@ body, .fi-body {
 .fi-sidebar-nav { padding: 8px 0 !important; }
 
 /* ============================================================
-   MAIN CONTENT AREA
+   MAIN CONTENT AREA (Centered Max-W-7xl Layout)
    ============================================================ */
 .fi-main {
     background: #f8fafc !important;
+    min-height: calc(100vh - var(--topbar-h)) !important;
 }
 .dark .fi-main {
-    background: #060a14 !important;
+    background: #090d16 !important;
+}
+
+.fi-main-ctn {
+    max-width: 80rem !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    padding: 1.75rem 1.5rem 3rem !important;
+    width: 100% !important;
 }
 
 /* ============================================================
    PAGE HEADER
    ============================================================ */
 .fi-header {
-    padding: 24px 32px 20px !important;
-    border-bottom: 1px solid rgba(226, 232, 240, 0.7) !important;
-    background: rgba(255,255,255,0.6) !important;
-    backdrop-filter: blur(12px) !important;
-}
-.dark .fi-header {
-    background: rgba(10,14,26,0.6) !important;
-    border-bottom: 1px solid rgba(30,41,59,0.6) !important;
+    padding: 0 0 20px 0 !important;
+    background: transparent !important;
+    border-bottom: none !important;
 }
 .fi-header-heading {
     font-family: var(--font-heading) !important;
-    font-size: 1.6rem !important;
+    font-size: 1.65rem !important;
     font-weight: 800 !important;
-    letter-spacing: -0.03em !important;
+    letter-spacing: -0.025em !important;
     color: #0f172a !important;
 }
-.dark .fi-header-heading { color: #f0f6ff !important; }
+.dark .fi-header-heading { color: #f8fafc !important; }
 
 /* Breadcrumbs */
-.fi-breadcrumbs-item { font-size: 0.75rem !important; }
+.fi-breadcrumbs-item { font-size: 0.75rem !important; color: #64748b !important; }
 
 /* ============================================================
-   CARDS, SECTIONS, PANELS
+   CARDS, SECTIONS, PANELS (Stark White with Soft Shadow)
    ============================================================ */
 .fi-section {
-    border-radius: var(--radius-card) !important;
-    border: 1px solid rgba(226, 232, 240, 0.85) !important;
+    border-radius: 14px !important;
+    border: 1px solid #e2e8f0 !important;
     background: #ffffff !important;
-    box-shadow: 0 1px 3px rgba(15,23,42,0.04),
-                0 8px 24px -6px rgba(15,23,42,0.05) !important;
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.04), 0 1px 2px -1px rgba(0, 0, 0, 0.04) !important;
     transition: box-shadow 0.2s ease, transform 0.2s ease !important;
     overflow: hidden !important;
 }
 .fi-section:hover {
-    box-shadow: 0 2px 8px rgba(15,23,42,0.06),
-                0 16px 32px -8px rgba(15,23,42,0.08) !important;
+    box-shadow: 0 4px 12px -2px rgba(15, 23, 42, 0.06) !important;
 }
 .dark .fi-section {
-    background: #0d1322 !important;
-    border-color: rgba(30,41,59,0.9) !important;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.35) !important;
+    background: #0f172a !important;
+    border-color: #1e293b !important;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.3) !important;
 }
 .fi-section-header {
-    padding: 18px 24px !important;
-    border-bottom: 1px solid rgba(226,232,240,0.6) !important;
+    padding: 16px 20px !important;
+    border-bottom: 1px solid #f1f5f9 !important;
     font-weight: 700 !important;
     font-size: 0.88rem !important;
 }
-.dark .fi-section-header { border-bottom-color: rgba(30,41,59,0.7) !important; }
+.dark .fi-section-header { border-bottom-color: #1e293b !important; }
 
 /* ============================================================
-   STATS OVERVIEW WIDGETS
+   STATS OVERVIEW WIDGETS (Clean 4-5 Column KPI Grid)
    ============================================================ */
 .fi-wi-stats-overview-stat {
-    border-radius: var(--radius-card) !important;
-    border: 1px solid rgba(226,232,240,0.8) !important;
+    border-radius: 14px !important;
+    border: 1px solid #e2e8f0 !important;
     background: #ffffff !important;
-    box-shadow: 0 1px 3px rgba(15,23,42,0.04), 0 8px 24px -6px rgba(15,23,42,0.04) !important;
-    transition: all 0.22s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.04), 0 1px 2px -1px rgba(0, 0, 0, 0.04) !important;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    padding: 18px 20px !important;
     overflow: hidden !important;
     position: relative;
 }
-.fi-wi-stats-overview-stat::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0; right: 0;
-    height: 3px;
-    background: linear-gradient(90deg, var(--brand-500), var(--brand-400));
-    opacity: 0;
-    transition: opacity 0.2s ease;
-}
 .fi-wi-stats-overview-stat:hover {
-    transform: translateY(-4px) !important;
-    box-shadow: 0 12px 32px -8px rgba(13,148,136,0.18) !important;
+    transform: translateY(-2px) !important;
+    box-shadow: 0 6px 16px -2px rgba(13, 148, 136, 0.12) !important;
 }
-.fi-wi-stats-overview-stat:hover::before { opacity: 1; }
 .dark .fi-wi-stats-overview-stat {
-    background: #0d1322 !important;
-    border-color: rgba(30,41,59,0.9) !important;
+    background: #0f172a !important;
+    border-color: #1e293b !important;
 }
 
-/* Stat Value */
+/* Stat Value & Label */
 .fi-wi-stats-overview-stat-value {
     font-family: var(--font-heading) !important;
     font-weight: 800 !important;
-    letter-spacing: -0.03em !important;
-    font-size: 2rem !important;
+    letter-spacing: -0.025em !important;
+    font-size: 1.85rem !important;
+    color: #0f172a !important;
+}
+.dark .fi-wi-stats-overview-stat-value { color: #f8fafc !important; }
+
+.fi-wi-stats-overview-stat-label {
+    font-size: 0.8rem !important;
+    font-weight: 600 !important;
+    color: #64748b !important;
+}
+.dark .fi-wi-stats-overview-stat-label { color: #94a3b8 !important; }
+
+/* Stat description subtext */
+.fi-wi-stats-overview-stat-description {
+    font-size: 0.75rem !important;
+    color: #64748b !important;
 }
 
 /* ============================================================
    CHART WIDGETS
    ============================================================ */
 .fi-wi-chart {
-    border-radius: var(--radius-card) !important;
-    border: 1px solid rgba(226,232,240,0.85) !important;
+    border-radius: 14px !important;
+    border: 1px solid #e2e8f0 !important;
     background: #ffffff !important;
-    box-shadow: 0 1px 3px rgba(15,23,42,0.04), 0 8px 24px -6px rgba(15,23,42,0.04) !important;
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.04), 0 1px 2px -1px rgba(0, 0, 0, 0.04) !important;
     overflow: hidden !important;
+    padding: 16px 20px !important;
 }
 .dark .fi-wi-chart {
-    background: #0d1322 !important;
-    border-color: rgba(30,41,59,0.9) !important;
+    background: #0f172a !important;
+    border-color: #1e293b !important;
 }
 
 /* ============================================================
-   DATA TABLES
+   DATA TABLES (Modern Clean SaaS Table)
    ============================================================ */
 .fi-ta-ctn {
-    border-radius: var(--radius-card) !important;
-    border: 1px solid rgba(226,232,240,0.85) !important;
+    border-radius: 14px !important;
+    border: 1px solid #e2e8f0 !important;
     overflow: hidden !important;
-    box-shadow: 0 1px 3px rgba(15,23,42,0.04), 0 8px 24px -6px rgba(15,23,42,0.04) !important;
+    background: #ffffff !important;
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.04), 0 1px 2px -1px rgba(0, 0, 0, 0.04) !important;
 }
-.dark .fi-ta-ctn { border-color: rgba(30,41,59,0.9) !important; }
+.dark .fi-ta-ctn { 
+    background: #0f172a !important;
+    border-color: #1e293b !important; 
+}
 
-/* Table Header */
+/* Table Header Row */
 .fi-ta-header-cell {
-    font-size: 0.7rem !important;
+    font-size: 0.72rem !important;
     font-weight: 700 !important;
-    letter-spacing: 0.06em !important;
+    letter-spacing: 0.05em !important;
     text-transform: uppercase !important;
-    color: #94a3b8 !important;
+    color: #64748b !important;
     background: #f8fafc !important;
-    padding: 12px 16px !important;
-    border-bottom: 1px solid rgba(226,232,240,0.8) !important;
+    padding: 13px 18px !important;
+    border-bottom: 1px solid #e2e8f0 !important;
 }
 .dark .fi-ta-header-cell {
-    background: #0a0f1e !important;
-    color: #475569 !important;
-    border-bottom-color: rgba(30,41,59,0.8) !important;
+    background: #0b1120 !important;
+    color: #94a3b8 !important;
+    border-bottom-color: #1e293b !important;
 }
 
-/* Table Rows */
+/* Table Rows & Hover */
 .fi-ta-row {
-    transition: background-color 0.12s ease !important;
-    border-bottom: 1px solid rgba(241,245,249,0.9) !important;
+    transition: background-color 0.15s ease !important;
+    border-bottom: 1px solid #f1f5f9 !important;
 }
 .fi-ta-row:hover {
-    background-color: rgba(240, 253, 250, 0.7) !important;
+    background-color: #f8fafc !important;
 }
 .dark .fi-ta-row {
-    border-bottom-color: rgba(30,41,59,0.5) !important;
+    border-bottom-color: #1e293b !important;
 }
 .dark .fi-ta-row:hover {
-    background-color: rgba(13,148,136,0.06) !important;
+    background-color: rgba(255, 255, 255, 0.03) !important;
 }
 .fi-ta-cell {
-    padding: 13px 16px !important;
+    padding: 14px 18px !important;
     font-size: 0.83rem !important;
 }
 
